@@ -36,3 +36,17 @@ function twoSumPointers(nums: Array<number>, target: number): Array<number> {
   }
   return [];
 }
+
+// Using HashMap
+function twoSumHashMap(nums: Array<number>, target: number): Array<number> {
+  let numObj: Map<number, number> = new Map();
+  for (let i = 0; i < nums.length; i++) {
+    let difference: number = target - nums[i];
+    if (numObj.has(difference)) {
+      return [numObj.get(difference)!, i];
+    } else {
+      numObj.set(nums[i], i);
+    }
+  }
+  return [];
+}
