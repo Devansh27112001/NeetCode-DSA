@@ -23,12 +23,8 @@ function isAnagramsByHashMap(strs: string[]): Array<Array<string>> {
       anagramMap.set(sorted, [string]);
     }
   }
-  let anagramArray: Array<Array<string>> = [];
-  for (const value of anagramMap.values()) {
-    anagramArray = [...anagramArray, value];
-  }
 
-  return anagramArray;
+  return Array.from(anagramMap.values());
 }
 
 console.log(isAnagramsByHashMap(["act", "pots", "tops", "cat", "stop", "hat"]));
