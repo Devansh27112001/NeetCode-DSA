@@ -9,9 +9,24 @@ function topKFrequent(nums: number[], k: number): Array<number> {
     }
   });
 
-  const freqKArray: Array<Array<number>> = Object.entries(freqMap).map(
-    ([value, freq]) => [freq, +value]
+  const freqArray: Array<Array<number>> = Array.from(
+    { length: nums.length + 1 },
+    (v, k) => []
   );
-  freqKArray.sort((a, b) => b[0] - a[0]);
-  return freqKArray.slice(0, k).map((pair) => pair[1]);
+  for (const [number, frequency] of Object.entries(freqMap)) {
+    freqArray[frequency].push(+number);
+  }
+  console.log(freqArray);
+  const result: Array<number> = [];
+
+  for (let i = freqArray.length - 1; i > 0; i--) {
+    for (let j = 0; j < freqArray[i].length; j++) {
+      result.push(freqArray[i][j]);
+      if (result.length === k) return result;
+    }
+  }
+  return [];
 }
+
+const answer = topKFrequent([1, 2, 2, 3, 3, 3], 2);
+console.log(answer);
