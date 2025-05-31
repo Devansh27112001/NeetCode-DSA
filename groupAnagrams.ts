@@ -13,6 +13,7 @@ function groupAnagramsByObject(strs: Array<string>): Array<Array<string>> {
   return Object.values(anagrams);
 }
 
+// Same time complexity as above
 function isAnagramsByHashMap(strs: string[]): Array<Array<string>> {
   let anagramMap: Map<string, Array<string>> = new Map();
   for (const string of strs) {
@@ -26,5 +27,3 @@ function isAnagramsByHashMap(strs: string[]): Array<Array<string>> {
 
   return Array.from(anagramMap.values());
 }
-
-console.log(isAnagramsByHashMap(["act", "pots", "tops", "cat", "stop", "hat"]));
