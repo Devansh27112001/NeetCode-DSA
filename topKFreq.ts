@@ -9,6 +9,7 @@ function topKFrequent(nums: number[], k: number): Array<number> {
     }
   });
 
+  // Instead of using the typical bucket sort, we made the index the frequency and the value the array of numbers that appear that no. of times.
   const freqArray: Array<Array<number>> = Array.from(
     { length: nums.length + 1 },
     (v, k) => []
