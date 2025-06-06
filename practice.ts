@@ -1,9 +1,22 @@
-const tmpArray = [2, 20, 4, 10, 3, 4, 5];
-const tmpHash: Map<number, number> = new Map();
-for (const num of tmpArray) {
-  if (!tmpHash.get(num)) {
-    tmpHash.set(num, num);
-  }
-}
+const board = [
+  ["1", "2", ".", ".", "3", ".", ".", ".", "."],
+  ["4", ".", ".", "5", ".", ".", ".", ".", "."],
+  [".", "9", "8", ".", ".", ".", ".", ".", "3"],
+  ["5", ".", ".", ".", "6", ".", ".", ".", "4"],
+  [".", ".", ".", "8", ".", "3", ".", ".", "5"],
+  ["7", ".", ".", ".", "2", ".", ".", ".", "6"],
+  [".", ".", ".", ".", ".", ".", "2", ".", "."],
+  [".", ".", ".", "4", "1", "9", ".", ".", "8"],
+  [".", ".", ".", ".", "8", ".", ".", "7", "9"],
+];
 
-console.log(tmpHash);
+let tmpMap: Map<string, number> = new Map();
+tmpMap.set(".", 1);
+tmpMap.set("1", 1);
+tmpMap.set("2", 1);
+tmpMap.set("3", 1);
+tmpMap.set("4", 1);
+tmpMap.set("5", 1);
+console.log(tmpMap);
+tmpMap.clear();
+console.log(tmpMap);

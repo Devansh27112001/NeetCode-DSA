@@ -33,6 +33,9 @@ function validPalindromeTwoPointers(s: string): boolean {
     if (s[start] !== s[end]) {
       return false;
     }
+    start++;
+    end--;
   }
   return true;
 }
+console.log(validPalindromeTwoPointers("tab a cat"));
