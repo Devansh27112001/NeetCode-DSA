@@ -1,6 +1,7 @@
 // nums = [1,2,2,3,3,3]
 function topKFrequent(nums: number[], k: number): Array<number> {
   const freqMap: { [key: string]: number } = {};
+  // Format: {number:frequency}
   nums.forEach((num) => {
     if (freqMap[num]) {
       freqMap[num]++;
@@ -14,10 +15,11 @@ function topKFrequent(nums: number[], k: number): Array<number> {
     { length: nums.length + 1 },
     (v, k) => []
   );
+
+  // This will make the indexes of the freqArray the frequencies and each index will have a subarray whuch will contain the numbers that appear that frequently -> index.
   for (const [number, frequency] of Object.entries(freqMap)) {
     freqArray[frequency].push(+number);
   }
-  console.log(freqArray);
   const result: Array<number> = [];
 
   for (let i = freqArray.length - 1; i > 0; i--) {

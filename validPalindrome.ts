@@ -15,7 +15,7 @@ function validPalindrome(s: string): boolean {
   const reversedString = modifiedString.split("").reverse().join("");
   return reversedString === modifiedString;
 }
-console.log(validPalindrome("tab a cat"));
+// console.log(validPalindrome("tab a cat"));
 
 // SOLUTION 2: Using two pointers
 function validPalindromeTwoPointers(s: string): boolean {
@@ -23,14 +23,14 @@ function validPalindromeTwoPointers(s: string): boolean {
   let end = s.length - 1;
   while (start < end) {
     // Any alphanumberic characters at start.
-    if (start < end && !isAlphaNumeric(s[start])) {
+    while (start < end && !isAlphaNumeric(s[start])) {
       start++;
     }
     // Any alphanumberic characters at end.
-    if (start < end && !isAlphaNumeric(s[end])) {
+    while (start < end && !isAlphaNumeric(s[end])) {
       end--;
     }
-    if (s[start] !== s[end]) {
+    if (s[start].toLowerCase() !== s[end].toLowerCase()) {
       return false;
     }
     start++;
@@ -38,4 +38,4 @@ function validPalindromeTwoPointers(s: string): boolean {
   }
   return true;
 }
-console.log(validPalindromeTwoPointers("tab a cat"));
+console.log(validPalindromeTwoPointers("Madam, in Eden, I'm Adam"));
