@@ -51,4 +51,22 @@ const rotateArrayByKPlacesOptimized = (nums: Array<number>, k: number) => {
   return nums;
 };
 
-console.log(rotateArrayByKPlacesOptimized([1, 2, 3, 4, 5, 6, 7], 3));
+// console.log(rotateArrayByKPlacesOptimized([1, 2, 3, 4, 5, 6, 7], 3));
+
+const rotateRightKPlaces = (nums: Array<number>, k: number): Array<number> => {
+  k %= nums.length;
+  const tmp = nums.slice(-k);
+  tmp;
+
+  for (let i = nums.length - k - 1; i >= 0; i--) {
+    nums[i + k] = nums[i];
+  }
+  nums;
+
+  for (let i = 0; i < tmp.length; i++) {
+    nums[i] = tmp[i];
+  }
+  return nums;
+};
+
+console.log(rotateRightKPlaces([1, 2, 3, 4, 5, 6, 7, 8], 3));
