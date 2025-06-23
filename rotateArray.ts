@@ -68,5 +68,29 @@ const rotateRightKPlaces = (nums: Array<number>, k: number): Array<number> => {
   }
   return nums;
 };
+// console.log(rotateRightKPlaces([1, 2, 3, 4, 5, 6, 7, 8], 3));
 
-console.log(rotateRightKPlaces([1, 2, 3, 4, 5, 6, 7, 8], 3));
+const rotateRightKPlacesOptimized = (
+  nums: Array<number>,
+  k: number
+): Array<number> => {
+  k %= nums.length;
+
+  const reverseArray = (arr: Array<number>, start: number, end: number) => {
+    while (start < end) {
+      [arr[start], arr[end]] = [arr[end], arr[start]];
+      start++;
+      end--;
+    }
+  };
+
+  reverseArray(nums, 0, nums.length - 1);
+  nums;
+  reverseArray(nums, 0, k - 1);
+  nums;
+  reverseArray(nums, k, nums.length - 1);
+  nums;
+  return nums;
+};
+
+console.log(rotateRightKPlacesOptimized([1, 2, 3, 4, 5, 6, 7, 8], 4));
