@@ -9,6 +9,8 @@ const rotateArrayByOnePlace = (nums: Array<number>): Array<number> => {
 
 // console.log(rotateArrayByOnePlace([1, 2, 3, 4, 5]));
 
+// TIME COMPLEXITY: O(d) + O(n-d) + O(d)
+// SPACE COMPLEXITY : O(d)
 const rotateArrayByKPlaces = (
   nums: Array<number>,
   k: number
@@ -29,4 +31,24 @@ const rotateArrayByKPlaces = (
   return nums;
 };
 
-console.log(rotateArrayByKPlaces([1, 2, 3, 4, 5, 7, 8, 9], 6));
+// console.log(rotateArrayByKPlaces([1, 2, 3, 4, 5, 7, 8, 9], 6));
+
+// TIME COMPLEXITY: O(2n)
+// SPACE COMPLEXITY : O(1)
+const rotateArrayByKPlacesOptimized = (nums: Array<number>, k: number) => {
+  k = k % nums.length;
+  const reverseArray = (arr: Array<any>, start: number, end: number) => {
+    while (start < end) {
+      [arr[start], arr[end]] = [arr[end], arr[start]];
+      start++;
+      end--;
+    }
+  };
+
+  reverseArray(nums, 0, k - 1);
+  reverseArray(nums, k, nums.length - 1);
+  reverseArray(nums, 0, nums.length - 1);
+  return nums;
+};
+
+console.log(rotateArrayByKPlacesOptimized([1, 2, 3, 4, 5, 6, 7], 3));
