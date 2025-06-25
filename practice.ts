@@ -1,9 +1,9 @@
-const nums = [1, 2, 3, 4, 5, 6, 7];
+const nums: Array<number> = [1];
 
-console.log(
-  nums
-    .splice(0, 4)
-    .reverse()
-    .concat(...nums.reverse())
-    .reverse()
-);
+if (nums[nums.length - 1] !== 1) {
+  nums.push(1);
+} else {
+  nums.push(2);
+}
+
+console.log(nums);
