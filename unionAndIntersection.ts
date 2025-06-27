@@ -71,4 +71,50 @@ const intersectionArrays = (
   return intersecArray;
 };
 
-console.log(intersectionArrays([1, 1, 2, 3, 4, 4, 5], [2, 3, 4, 5, 6]));
+// console.log(
+//   intersectionArrays([1, 1, 2, 2, 3, 3, 4, 5, 6], [2, 3, 3, 5, 6, 6, 7])
+// );
+
+//------------------------------------------------- UNSORTED ARRAYS-----------------------------------------------
+// UNIQUE INTERSECTION
+const intersectionUnsortedArrayUnique = (
+  a: Array<number>,
+  b: Array<number>
+): Array<number> => {
+  const intersecArray: Array<number> = [];
+  const uniqueA = new Set(a);
+  for (const item of b) {
+    if (uniqueA.has(item)) {
+      intersecArray.push(item);
+      uniqueA.delete(item);
+    }
+  }
+  return intersecArray;
+};
+
+console.log(intersectionUnsortedArrayUnique([1, 2, 2, 1], [2, 2]));
+
+// Find the intersection, and if a number appears k times in a and j times in b, it should appear min(k, j) times in the result"?
+const intersectionUnsortedArray = (
+  a: Array<number>,
+  b: Array<number>
+): Array<number> => {
+  const intersecArray: Array<number> = [];
+  const freqA = new Map<number, number>();
+  for (const item of a) {
+    freqA.set(item, (freqA.get(item) || 0) + 1);
+  }
+
+  for (const item of b) {
+    const count: number | undefined = freqA.get(item);
+
+    if (count && count > 0) {
+      intersecArray.push(item);
+      freqA.set(item, count - 1);
+    }
+  }
+
+  return intersecArray;
+};
+
+console.log(intersectionUnsortedArray([1, 2, 2, 1], [2, 2]));
