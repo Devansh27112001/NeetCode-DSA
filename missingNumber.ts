@@ -40,7 +40,10 @@ const missingNumber_HashArray = (nums: Array<number>) => {
   return missing;
 };
 
+// -----------------------------------------OPTIMAL----------------------------
 // VERY CLEVER WAY TO DO IT
+// TC = O(n)
+// SC - O(1)
 const missingNumber_math = (nums: Array<number>): number => {
   let num_sum = (nums.length * (nums.length + 1)) / 2;
   for (const item of nums) {
@@ -51,3 +54,19 @@ const missingNumber_math = (nums: Array<number>): number => {
 };
 
 console.log(missingNumber_math([3, 0, 1]));
+
+const missingNumber_Xor = (nums: Array<number>): number => {
+  let XOR_1 = 0;
+  for (let i = 0; i <= nums.length; i++) {
+    XOR_1 = XOR_1 ^ i;
+  }
+
+  let XOR_2 = 0;
+  for (const item of nums) {
+    XOR_2 ^= item;
+  }
+
+  return XOR_1 ^ XOR_2;
+};
+
+console.log(missingNumber_Xor([3, 0, 1]));
