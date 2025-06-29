@@ -55,15 +55,15 @@ const missingNumber_math = (nums: Array<number>): number => {
 
 console.log(missingNumber_math([3, 0, 1]));
 
+// Here in the problem statement the numbers will be in the range of [0,n] and n will be the length of the array
+// However, in another version, the range is [1,N] and N will be another input to the array. The for loop in the below function goes from 0 to (length of array)-1, so we have to do XOR_1 = XOR ^ N. Here n and N are different. N is the range and n = length of the array.
 const missingNumber_Xor = (nums: Array<number>): number => {
   let XOR_1 = 0;
-  for (let i = 0; i <= nums.length; i++) {
-    XOR_1 = XOR_1 ^ i;
-  }
-
   let XOR_2 = 0;
-  for (const item of nums) {
-    XOR_2 ^= item;
+
+  for (let i = 0; i < nums.length; i++) {
+    XOR_1 ^= i + 1;
+    XOR_2 ^= nums[i];
   }
 
   return XOR_1 ^ XOR_2;
