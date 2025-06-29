@@ -1,9 +1,3 @@
-const nums: Array<number> = [1];
-
-if (nums[nums.length - 1] !== 1) {
-  nums.push(1);
-} else {
-  nums.push(2);
-}
-
-console.log(nums);
+const nums: Array<number> = Array.from({ length: 5 }, () => 0);
+nums[0] = 2;
+nums;
