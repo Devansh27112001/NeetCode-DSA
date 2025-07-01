@@ -16,17 +16,13 @@ const rotateArrayByKPlaces = (
   k: number
 ): Array<number> => {
   k = k % nums.length;
-  console.log(k);
   const tmp = nums.slice(0, k);
 
   for (let i = k; i < nums.length; i++) {
     nums[i - k] = nums[i];
   }
-  nums;
-  let m = 0;
   for (let j = nums.length - k; j < nums.length; j++) {
     nums[j] = tmp[j - (nums.length - k)];
-    m++;
   }
   return nums;
 };
@@ -53,22 +49,21 @@ const rotateArrayByKPlacesOptimized = (nums: Array<number>, k: number) => {
 
 // console.log(rotateArrayByKPlacesOptimized([1, 2, 3, 4, 5, 6, 7], 3));
 
+// BETTER SOLUTION
 const rotateRightKPlaces = (nums: Array<number>, k: number): Array<number> => {
   k %= nums.length;
   const tmp = nums.slice(-k);
-  tmp;
 
   for (let i = nums.length - k - 1; i >= 0; i--) {
     nums[i + k] = nums[i];
   }
-  nums;
 
   for (let i = 0; i < tmp.length; i++) {
     nums[i] = tmp[i];
   }
   return nums;
 };
-// console.log(rotateRightKPlaces([1, 2, 3, 4, 5, 6, 7, 8], 3));
+console.log(rotateRightKPlaces([1, 2, 3, 4, 5, 6, 7, 8], 3));
 
 const rotateRightKPlacesOptimized = (
   nums: Array<number>,
@@ -93,4 +88,4 @@ const rotateRightKPlacesOptimized = (
   return nums;
 };
 
-console.log(rotateRightKPlacesOptimized([1, 2, 3, 4, 5, 6, 7, 8], 4));
+// console.log(rotateRightKPlacesOptimized([1, 2, 3, 4, 5, 6, 7, 8], 4));
