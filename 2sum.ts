@@ -43,3 +43,20 @@ const twoSum_better = (
 };
 
 // console.log(twoSum_better([2, 6, 5, 8, 11], 14));
+const twoSum_optimal = (
+  nums: Array<number>,
+  target: number
+): Array<number> | number => {
+  const hashMap = new Map<number, number>();
+  for (let i = 0; i < nums.length; i++) {
+    const diff = target - nums[i];
+    if (hashMap.has(diff)) {
+      return [hashMap.get(diff)! + 1, i + 1];
+    } else {
+      hashMap.set(nums[i], i);
+    }
+  }
+  return -1;
+};
+
+console.log(twoSum_optimal([2, 6, 5, 8, 11], 14));
