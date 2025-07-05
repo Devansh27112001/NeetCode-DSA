@@ -7,44 +7,52 @@ const sortTheArray_bruteforce = (nums: Array<number>): Array<number> => {
 // BETTER : O(2N) => O(N) and O(1) space
 // Count sort
 const sortTheArray_better = (nums: Array<number>): Array<number> => {
-  let count_0 = 0;
-  let count_1 = 0;
-  let count_2 = 0;
+  let count = [0, 0, 0];
   for (const number of nums) {
-    number === 0 && count_0++;
-    number === 1 && count_1++;
-    number === 2 && count_2++;
+    number === 0 && count[0]++;
+    number === 1 && count[1]++;
+    number === 2 && count[2]++;
   }
 
   for (let i = 0; i < nums.length; i++) {
-    if (count_0 > 0) {
+    if (count[0] > 0) {
       nums[i] = 0;
-      count_0--;
-    } else if (count_1 > 0) {
+      count[0]--;
+    } else if (count[1] > 0) {
       nums[i] = 1;
-      count_1--;
+      count[1]--;
     } else {
       nums[i] = 2;
-      count_2--;
+      count[2]--;
     }
   }
   return nums;
 };
 
 // console.log(sortTheArray_better([0, 1, 2, 0, 1, 2, 1, 2, 0, 0, 0, 1]));
+
+// One pass solution - Dutch national flag algorithm
+// TC: O(n)
+// SC: O(1)
 const sortTheArray_optimal = (nums: Array<number>): Array<number> => {
-  let i = 0;
-  let j = nums.length - 1;
-  let k = 0;
-  while (k < nums.length) {
-    if (nums[k] === 0) {
-      [nums[i], nums[k]] = [nums[k], nums[i]];
-      i++;
-    } else if (nums[k] === 2) {
-      [nums[j], nums[k]] = [nums[k], nums[j]];
-      j--;
+  let low = 0;
+  let mid = 0;
+  let high = nums.length - 1;
+  while (mid <= high) {
+    if (nums[mid] === 0) {
+      let tmp = nums[mid];
+      nums[mid] = nums[low];
+      nums[low] = tmp;
+      low++;
+      mid++;
+    } else if (nums[mid] === 2) {
+      let tmp = nums[mid];
+      nums[mid] = nums[high];
+      nums[high] = tmp;
+      high--;
+    } else {
+      mid++;
     }
-    k++;
   }
   return nums;
 };
