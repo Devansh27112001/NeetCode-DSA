@@ -23,7 +23,6 @@ const longestSubarrayWithSumK = (nums: Array<number>, k: number): number => {
 // OPTIMAL -> for array having negatives as well.
 // TC:O(n)
 // SC: O(n)
-// Only valid if the array has positives and no zeros as well.
 const longestSubarrayWithSumKHashMap = (
   nums: Array<number>,
   k: number
