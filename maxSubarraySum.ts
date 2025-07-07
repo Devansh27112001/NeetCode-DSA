@@ -12,20 +12,33 @@ const maxsubArraySum = (nums: Array<number>): number => {
   return maxSum;
 };
 
-console.log(maxsubArraySum([-2, -3, 4, -1, -2, 1, 5, -3]));
+// console.log(maxsubArraySum([-2, -3, 4, -1, -2, 1, 5, -3]));
 
 // KADANE'S algorithm
 // TC = O(n)
 const maxsubArraySum_optimal = (nums: Array<number>): number => {
   let max_Sum = -Infinity;
   let curr_sum = 0;
-  for (const number of nums) {
-    curr_sum += number;
-    max_Sum = Math.max(curr_sum, max_Sum);
+  // Only if required to print the subarray
+  let start = -1;
+  let end = -1;
+  // Use the classic for loop. This loop is slower as it used the Symbol.iterator() method which acts as a overhead.
+  for (let i = 0; i < nums.length; i++) {
+    // Only if required to print the subarray
+    if (curr_sum === 0) start = i;
+    curr_sum += nums[i];
+    // max_Sum = Math.max(curr_sum, max_Sum);
+    if (curr_sum > max_Sum) {
+      max_Sum = curr_sum;
+      // Only if required to print the subarray
+      end = i;
+    }
     if (curr_sum < 0) {
       curr_sum = 0;
     }
   }
+  console.log(nums.slice(start, end + 1));
+
   return max_Sum;
 };
-console.log(maxsubArraySum([-2, -3, 4, -1, -2, 1, 5, -3]));
+console.log(maxsubArraySum_optimal([-2, 7, -3, 4]));
