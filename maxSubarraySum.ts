@@ -13,3 +13,19 @@ const maxsubArraySum = (nums: Array<number>): number => {
 };
 
 console.log(maxsubArraySum([-2, -3, 4, -1, -2, 1, 5, -3]));
+
+// KADANE'S algorithm
+// TC = O(n)
+const maxsubArraySum_optimal = (nums: Array<number>): number => {
+  let max_Sum = -Infinity;
+  let curr_sum = 0;
+  for (const number of nums) {
+    curr_sum += number;
+    max_Sum = Math.max(curr_sum, max_Sum);
+    if (curr_sum < 0) {
+      curr_sum = 0;
+    }
+  }
+  return max_Sum;
+};
+console.log(maxsubArraySum([-2, -3, 4, -1, -2, 1, 5, -3]));
