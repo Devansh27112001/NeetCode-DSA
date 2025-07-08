@@ -34,8 +34,8 @@ console.log(rearrangeArray_bruteForce([3, 1, -2, -5, 2, -4]));
 // Runs a little slower than above algoritnm.
 // TC = O(n)
 // SC = O(n)
-const rearrangeArray_better = (nums: Array<number>): Array<number> | number => {
-  const ansArray: Array<number> = [];
+const rearrangeArray_better = (nums: Array<number>): Int32Array | number => {
+  const ansArray = new Int32Array(nums.length);
   let pos = 0;
   let neg = 1;
   for (let i = 0; i < nums.length; i++) {
