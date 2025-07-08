@@ -1,3 +1,6 @@
+// BRUTE-FORCE
+// TC = O(n^2)
+// SC = O(1)
 const buyAndSell_bruteForce = (nums: Array<number>): number => {
   let profit = 0;
   for (let i = 0; i < nums.length; i++) {
@@ -10,6 +13,7 @@ const buyAndSell_bruteForce = (nums: Array<number>): number => {
 };
 
 // console.log(buyAndSell_bruteForce([7, 1, 5, 3, 6, 4]));
+
 // OPTIMAL
 // TC = O(n)
 // SC = O(1)
