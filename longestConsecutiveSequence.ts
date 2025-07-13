@@ -11,6 +11,8 @@ const solution_bruteForce = (arr: Array<number>): number => {
     if (arr[i] - arr[i - 1] === 1) {
       length++;
       maxLength = Math.max(length, maxLength);
+    } else if (arr[i] === arr[i - 1]) {
+      continue;
     } else {
       length = 1;
     }
@@ -18,7 +20,7 @@ const solution_bruteForce = (arr: Array<number>): number => {
   return maxLength;
 };
 
-console.log(solution_bruteForce([102, 4, 100, 1, 101, 3, 2, 1, 1]));
+console.log(solution_bruteForce([0, 1, 1, 2]));
 
 // TC = O(n) but O(n^2) if array is sorted or too big
 // SC = O(n)
