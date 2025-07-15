@@ -20,8 +20,37 @@ const solution_brute_force = (
   return tmpArray;
 };
 
+// console.log(
+//   solution_brute_force([
+//     [1, 2, 3, 4],
+//     [5, 6, 7, 8],
+//     [9, 10, 11, 12],
+//     [13, 14, 15, 16],
+//   ])
+// );
+
+const solution_optimal = (arr: Array<Array<number>>): Array<Array<number>> => {
+  // STEP 1: Transpose the matrix => (0,1) <-> (1,0) , (0,2) <-> (2,0) , (0,3) <-> (3,0)
+  for (let i = 0; i < arr.length; i++) {
+    for (let j = i + 1; j < arr.length; j++) {
+      [arr[i][j], arr[j][i]] = [arr[j][i], arr[i][j]];
+    }
+  }
+
+  // STEP 2: Reverse each row.
+  for (let i = 0; i < arr.length; i++) {
+    for (let j = 0; j < arr.length / 2; j++) {
+      [arr[i][j], arr[i][arr.length - 1 - j]] = [
+        arr[i][arr.length - 1 - j],
+        arr[i][j],
+      ];
+    }
+  }
+  return arr;
+};
+
 console.log(
-  solution_brute_force([
+  solution_optimal([
     [1, 2, 3, 4],
     [5, 6, 7, 8],
     [9, 10, 11, 12],
