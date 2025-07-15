@@ -29,8 +29,10 @@ const solution_brute_force = (
 //   ])
 // );
 
+// TC = O(n^2)
+// SC = O(1) - In-place solution
 const solution_optimal = (arr: Array<Array<number>>): Array<Array<number>> => {
-  // STEP 1: Transpose the matrix => (0,1) <-> (1,0) , (0,2) <-> (2,0) , (0,3) <-> (3,0)
+  // STEP 1: Transpose the matrix => (0,1) <-> (1,0) , (0,2) <-> (2,0) , (0,3) <-> (3,0). We did i from 0 -> n - 1 and j from i+1 -> n - 1 because we don't needd to do through the diagonal elements.
   for (let i = 0; i < arr.length; i++) {
     for (let j = i + 1; j < arr.length; j++) {
       [arr[i][j], arr[j][i]] = [arr[j][i], arr[i][j]];
