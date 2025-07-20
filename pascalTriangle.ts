@@ -6,7 +6,7 @@
 //    ==> Use formula = prev * (row - col + 1) / (col - 1) => push this to the array
 // -> Given n , print the entire triangle.
 
-// -----------------------TYPE 1-----------------------------
+// ----------------------------------------TYPE 1-------------------------------------------------------
 // The below function takes parameters as function solution_optimal_type1(row - 1, col - 1)
 // TC = O(col)
 // SC = O(1)
@@ -36,7 +36,7 @@ const solution_optimal_type1 = (row: number, col: number): number => {
 };
 // console.log(solution_optimal_type1(3, 2));
 
-// ---------------------TYPE 2-----------------------
+// --------------------------------------------TYPE 2-------------------------------------------------
 // TC = O(row * col)
 // SC = O(1)
 const solution_brute_type2 = (row: number) => {
@@ -44,7 +44,6 @@ const solution_brute_type2 = (row: number) => {
     console.log(solution_optimal_type1(row - 1, col - 1));
   }
 };
-
 // solution_brute_type2(5);
 
 // TC = O(row)
@@ -61,7 +60,6 @@ const solution_optimal_type2 = (row: number): Array<number> => {
   console.log(ansArray);
   return ansArray;
 };
-
 solution_optimal_type2(6);
 
 // -------------------------------------------------TYPE 3-------------------------------------
@@ -78,6 +76,8 @@ const solution_sub_optimal_type3 = (row: number): Array<Array<number>> => {
 };
 // console.log(solution_sub_optimal_type3(6));
 
+// TC = O(row^2)
+// SC = O ((row * (row + 1)) / 2) ~ O(row^2)
 const solution_optimal_type3 = (row: number) => {
   let ans: Array<Array<number>> = [[1]];
   if (row === 1) return ans;
@@ -90,5 +90,4 @@ const solution_optimal_type3 = (row: number) => {
   // console.log(ans);
   return ans;
 };
-
 solution_optimal_type3(6);
