@@ -47,7 +47,7 @@ const longestSubarrayWithSumKHashMap = (
   return l;
 };
 
-// longestSubarrayWithSumKHashMap([1, 2, 3, 1, 1, 1, 1, 4, 2, 3], 3);
+longestSubarrayWithSumKHashMap([1, 2, 3, -3, 1, 1, 1, 4, 2, -3], 3);
 
 // OPTIMAL => For array with postives and zeros only.
 // TC = O(2n)

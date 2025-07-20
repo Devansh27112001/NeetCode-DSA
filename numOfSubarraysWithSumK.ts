@@ -19,7 +19,7 @@ const solution_brute_force = (arr: Array<number>, k: number): number => {
 // TC = O(n)
 // SC = O(n)
 // The concept is same as the longestSubarray - prefix Sum but the logic is different.
-// Key difference to remember: We store <prefixSum, count for that sum> instead of <perfixSum,index>
+// Key difference to remember: We store <prefixSum, count for that sum> instead of <prefixSum,index>
 const solution_optimal = (arr: Array<number>, k: number): number => {
   let count = 0;
   let sum = 0;
