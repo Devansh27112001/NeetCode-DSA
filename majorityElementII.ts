@@ -54,3 +54,47 @@ const solution_betterII = (arr: Array<number>): Array<number> => {
   }
   return [...majArray];
 };
+
+// BASED ON BOYER-MOORE's algorithm
+// TC = O(n)
+// SC = O(1)
+const solution_optimal = (arr: Array<number>): Array<number> => {
+  const majArray: Array<number> = [];
+
+  let count1 = 0;
+  let count2 = 0;
+  let cand1: number = Infinity;
+  let cand2: number = Infinity;
+
+  for (let i = 0; i < arr.length; i++) {
+    if (count1 === 0 && arr[i] !== cand2) {
+      count1 = 1;
+      cand1 = arr[i];
+    } else if (count2 === 0 && arr[i] !== cand1) {
+      count2 = 1;
+      cand2 = arr[i];
+    } else if (arr[i] === cand1) {
+      count1++;
+    } else if (arr[i] === cand2) {
+      count2++;
+    } else {
+      count1--;
+      count2--;
+    }
+  }
+
+  count1 = 0;
+  count2 = 0;
+
+  for (let i = 0; i < arr.length; i++) {
+    arr[i] === cand1 && count1++;
+    arr[i] === cand2 && count2++;
+  }
+
+  count1 > arr.length / 3 && majArray.push(cand1);
+  count2 > arr.length / 3 && majArray.push(cand2);
+  console.log(majArray);
+  return majArray;
+};
+
+solution_optimal([3, 2, 3]);
