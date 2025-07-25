@@ -76,7 +76,6 @@ const solution_optimal = (arr: Array<Array<number>>): Array<Array<number>> => {
       arr[row][0] = 0;
     }
   }
-
   return arr;
 };
 

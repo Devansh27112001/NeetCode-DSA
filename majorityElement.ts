@@ -34,6 +34,7 @@ console.log(majaorityElement_hashMap([2, 2, 1, 1, 1, 2, 2]));
 // OPTIMAL
 // TC = O(n)
 // SC = O(1)
+// Moore's counting algorithm.
 const majaorityElement_optimal = (nums: Array<number>): number => {
   let count = 0;
   let majEle = 0;
@@ -49,7 +50,7 @@ const majaorityElement_optimal = (nums: Array<number>): number => {
     }
   }
 
-  // The below code is needed only ig it is not stated in the problem that a majority element will always exist.
+  // The below code is needed only if it is not stated in the problem that a majority element will always exist.
   count = 0;
   for (const number of nums) {
     number === majEle && count++;
