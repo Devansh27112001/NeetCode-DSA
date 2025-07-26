@@ -42,20 +42,21 @@ const solution_optimal = (arr: Array<number>): Array<Array<number>> => {
       hashMap.set(arr[j], j);
     }
   }
-  console.log(solution);
   return solution;
 };
 // solution_optimal([-1, 0, 1, 2, -1, -4]);
 
+// TC = O(nlogn) + O(n^2) ~ O(n^2)
+// SC = O(1)
 const solution_optimal_2 = (arr: Array<number>): Array<Array<number>> => {
   const solution: Array<Array<number>> = [];
   // SORT THE ARRAY
   arr.sort((a, b) => a - b);
 
-  // IF THE FIRST ELEMENT IS >0, THE SUM WILL ALWAYS BE >0 AS WE HAVE SORTED THE ARRAY.
+  // IF THE FIRST ELEMENT IS > 0, THE SUM WILL ALWAYS BE > 0 AS WE HAVE SORTED THE ARRAY.
   if (arr[0] > 0) return solution;
   for (let i = 0; i < arr.length; i++) {
-    // FOR i AND i - 1 ELEMETS BEING THE SAME, SKIP THE CURRENT ELEMENT. FOR EXAMPLE : [-4 , -1 , -1, ......]
+    // FOR i AND i - 1 ELEMENTS BEING THE SAME, SKIP THE CURRENT ELEMENT. FOR EXAMPLE : [-4 , -1 , -1, ......]
     if (i > 0 && arr[i] === arr[i - 1]) {
       continue;
     }
@@ -84,7 +85,6 @@ const solution_optimal_2 = (arr: Array<number>): Array<Array<number>> => {
       }
     }
   }
-  console.log(solution);
   return solution;
 };
 
