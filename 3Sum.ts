@@ -20,7 +20,6 @@ const solution_brute_force = (arr: Array<number>): Array<Array<number>> => {
   }
   return solution;
 };
-
 // console.log(solution_brute_force([-1, 0, 1, 2, -1, -4]));
 
 const solution_optimal = (arr: Array<number>): Array<Array<number>> => {
@@ -46,4 +45,47 @@ const solution_optimal = (arr: Array<number>): Array<Array<number>> => {
   console.log(solution);
   return solution;
 };
-solution_optimal([-1, 0, 1, 2, -1, -4]);
+// solution_optimal([-1, 0, 1, 2, -1, -4]);
+
+const solution_optimal_2 = (arr: Array<number>): Array<Array<number>> => {
+  const solution: Array<Array<number>> = [];
+  // SORT THE ARRAY
+  arr.sort((a, b) => a - b);
+
+  // IF THE FIRST ELEMENT IS >0, THE SUM WILL ALWAYS BE >0 AS WE HAVE SORTED THE ARRAY.
+  if (arr[0] > 0) return solution;
+  for (let i = 0; i < arr.length; i++) {
+    // FOR i AND i - 1 ELEMETS BEING THE SAME, SKIP THE CURRENT ELEMENT. FOR EXAMPLE : [-4 , -1 , -1, ......]
+    if (i > 0 && arr[i] === arr[i - 1]) {
+      continue;
+    }
+
+    // IF, WHILE ITERATING, WE GET ANY ELEMENT > 0 , WE CAN STOP ITERTING THE ARRAY.
+    if (i > 0 && arr[i] > 0) {
+      break;
+    }
+
+    let j = i + 1;
+    let k = arr.length - 1;
+    while (j < k) {
+      const sum = arr[i] + arr[j] + arr[k];
+      if (sum === 0) {
+        solution.push([arr[i], arr[j], arr[k]]);
+        j++;
+
+        // FOR EXAMPLE: [-4, -1 , -1, ........]
+        while (j < k && arr[j] === arr[j - 1]) {
+          j++;
+        }
+      } else if (sum > 0) {
+        k--;
+      } else {
+        j++;
+      }
+    }
+  }
+  console.log(solution);
+  return solution;
+};
+
+solution_optimal_2([-1, 0, 1, 2, -1, -4]);
