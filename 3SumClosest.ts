@@ -7,8 +7,9 @@ const solution_brute_force = (nums: Array<number>, target: number): number => {
     for (let j = i + 1; j < nums.length; j++) {
       for (let k = j + 1; k < nums.length; k++) {
         const sum = nums[i] + nums[j] + nums[k];
-        if (target - sum < diff) {
-          diff = target - sum;
+        const curr_diff = Math.abs(sum - target);
+        if (curr_diff < diff) {
+          diff = curr_diff;
           closest = sum;
         }
       }
@@ -16,5 +17,35 @@ const solution_brute_force = (nums: Array<number>, target: number): number => {
   }
   return closest;
 };
+// console.log(solution_brute_force([0, 0, 0], 1));
 
-console.log(solution_brute_force([0, 0, 0], 1));
+const solution_better = (nums: Array<number>, target: number): number => {
+  let closest: number = Infinity;
+  let diff: number = Infinity;
+
+  if (nums.length === 3) return nums.reduce((acc, curr) => curr + acc, 0);
+
+  nums.sort((a, b) => a - b);
+
+  for (let i = 0; i < nums.length; i++) {
+    let j = i + 1;
+    let k = nums.length - 1;
+
+    while (j < k) {
+      const sum = nums[i] + nums[j] + nums[k];
+      const curr_diff = Math.abs(sum - target);
+      if (curr_diff < diff) {
+        closest = sum;
+        diff = curr_diff;
+      }
+      if (sum > target) {
+        k--;
+      } else {
+        j++;
+      }
+    }
+  }
+
+  return closest;
+};
+// console.log(solution_better([1, 1, 1, 5, 5, 5, 5, 5, 5], 14));
