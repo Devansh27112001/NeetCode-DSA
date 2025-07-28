@@ -3,6 +3,9 @@
 // => a, b, c, and d are distinct.
 // => nums[a] + nums[b] + nums[c] + nums[d] == target
 // => You may return the answer in any order.
+
+// TC = O(n^4)
+// SC = O(no. of unique quadraples)
 const solution_brute_force = (
   nums: Array<number>,
   target: number
@@ -29,6 +32,8 @@ const solution_brute_force = (
 };
 // console.log(solution_brute_force([1, 0, -1, 0, -2, 2], 0));
 
+// TC = O(n^3)
+// SC = O(1)
 const solution_optimal = (
   nums: Array<number>,
   target: number
