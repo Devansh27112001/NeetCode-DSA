@@ -63,7 +63,7 @@ const solution_optimal = (arr: Array<Array<number>>): Array<Array<number>> => {
     }
   }
 
-  // If [0][0] => 1st elemt is zero, the first wor will be zero.
+  // If [0][0] => 1st elemt is zero, the first row will be zero.
   if (arr[0][0] === 0) {
     for (let col = 0; col < arr[0].length; col++) {
       arr[0][col] = 0;
