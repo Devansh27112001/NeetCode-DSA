@@ -16,6 +16,8 @@ const solution_better = (nums: Array<number>, k: number): number => {
   return count;
 };
 
+// TC = O(n^2)
+// SC = O(logn) to O(n)
 const solution_optimal = (nums: Array<number>, k: number): number => {
   let count = 0;
   nums.sort((a, b) => a - b);
@@ -31,6 +33,8 @@ const solution_optimal = (nums: Array<number>, k: number): number => {
   return count;
 };
 
+// TC = O(n)
+// SC = O(n) OR O(u), u being the number of unique numbers
 const solution_optimal_2 = (nums: Array<number>, k: number): number => {
   let count = 0;
 
