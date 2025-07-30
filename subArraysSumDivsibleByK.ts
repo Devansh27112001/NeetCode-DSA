@@ -32,12 +32,12 @@ const solution_optimal = (nums: Array<number>, k: number): number => {
   for (let i = 0; i < nums.length; i++) {
     sum += nums[i];
     let remainder = sum % k;
+    if (remainder < 0) remainder += k;
     let prev_reamin_occu = remFreq.get(remainder) || 0;
     count += prev_reamin_occu;
     remFreq.set(remainder, (remFreq.get(remainder) || 0) + 1);
   }
-  count;
   return count;
 };
 
-solution_optimal([4, 5, 0, -2, -3, 1], 5);
+solution_optimal([3, 0, 1, 4, -8, -1, 6, -5], 5);
