@@ -1,6 +1,9 @@
 // Given an integer array nums and an integer k, return the number of non-empty subarrays that have a sum divisible by k.
 
 // A subarray is a contiguous part of an array.
+
+// TC = O(n ^ 2)
+// SC = O(1)
 const solution_bruteforce = (nums: Array<number>, k: number): number => {
   let count: number = 0;
   for (let i = 0; i < nums.length; i++) {
@@ -18,6 +21,9 @@ const solution_bruteforce = (nums: Array<number>, k: number): number => {
 
 // console.log(solution_bruteforce([4, 5, 0, -2, -3, 1], 5));
 
+// INTUITION: Store the remainder: freqForthatRemainder in the hashMap.
+// TC = O(n)
+// SC = O(k) , k = distinct remainders
 const solution_optimal = (nums: Array<number>, k: number): number => {
   let count = 0;
   let remFreq = new Map<number, number>();
