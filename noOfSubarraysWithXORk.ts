@@ -14,4 +14,4 @@ const solution_optimal = (nums: Array<number>, k: number): number => {
   return count;
 };
 
-console.log(solution([4, 2, 2, 6, 4], 6));
+console.log(solution_optimal([4, 2, 2, 6, 4], 6));
