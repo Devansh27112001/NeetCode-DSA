@@ -5,6 +5,8 @@
 // Given the array nums after the possible rotation and an integer target, return the index of target if it is in nums, or -1 if it is not in nums.
 
 // You must write an algorithm with O(log n) runtime complexity.
+
+// TC = O(n)
 const soltuion_brute_force = (nums: Array<number>, target: number): number => {
   let index = -1;
   for (let i = 0; i < nums.length; i++) {
@@ -15,6 +17,8 @@ const soltuion_brute_force = (nums: Array<number>, target: number): number => {
   return index;
 };
 
+// TC = O(logn)
+// SC = O(1)
 const solution_optimal = (nums: Array<number>, target: number): number => {
   let low = 0;
   let high = nums.length - 1;
