@@ -29,6 +29,7 @@ const longestSubarrayWithSumKHashMap = (
 ): number => {
   let l = 0;
   let sum = 0;
+  // Wew are storing the sum and index
   let sumHash = new Map<number, number>();
   for (let i = 0; i < nums.length; i++) {
     sum += nums[i];

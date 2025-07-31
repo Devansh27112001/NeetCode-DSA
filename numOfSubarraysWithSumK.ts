@@ -23,6 +23,7 @@ const solution_brute_force = (arr: Array<number>, k: number): number => {
 const solution_optimal = (arr: Array<number>, k: number): number => {
   let count = 0;
   let sum = 0;
+  // We are storing the Sum and it's frequency.
   let sumMap = new Map<number, number>();
   sumMap.set(sum, 1);
   for (let i = 0; i < arr.length; i++) {
