@@ -1,3 +1,6 @@
+// Given an array of intervals where intervals[i] = [starti, endi], merge all overlapping intervals, and return an array of the non-overlapping intervals that cover all the intervals in the input.
+// TC = O(nlogn + n^2)
+// SC = O(1), Not counting the space required to return the solution.
 const solution_bruteforce = (
   intervals: Array<Array<number>>
 ): Array<Array<number>> => {
@@ -42,13 +45,14 @@ const solution_bruteforce = (
 //   ])
 // );
 
+// TC = O(nlogn + n)
+// SC = O(1), Not counting the space required to return the solution.
 const solution_better = (
   intervals: Array<Array<number>>
 ): Array<Array<number>> => {
   const solution: Array<Array<number>> = [];
 
   intervals.sort((a, b) => (a[0] !== b[0] ? a[0] - b[0] : a[1] - b[1]));
-  intervals;
   let start = intervals[0][0];
   let end = intervals[0][1];
   for (let i = 1; i < intervals.length; i++) {
