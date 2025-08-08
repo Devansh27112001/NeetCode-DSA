@@ -16,6 +16,8 @@ const solution_better = (arr: Array<number>): Array<number> => {
   }
 
   let missing = expectedSum - actualSum + repeatingNumber;
+  solution = [repeatingNumber, missing];
+
   return solution;
 };
 
