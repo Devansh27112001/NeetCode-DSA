@@ -42,13 +42,16 @@ const solution_better_2 = (nums: Array<number>): number => {
   }
   return sum;
 };
-console.log(solution_better_2([3, 3, 7, 7, 10, 11, 11]));
 
 // It was given that the solution needs to be in O(logn) => Binary search
 // Observe diff. test cases to find out about the mid%2 and whether to go left side or right side.
 const solution_optimal = (nums: Array<number>) => {
-  let low = 0;
-  let high = nums.length - 1;
+  if (nums.length === 1) return nums[0];
+  if (nums[0] !== nums[1]) return nums[0];
+  if (nums[nums.length - 1] !== nums[nums.length - 2])
+    return nums[nums.length - 1];
+  let low = 1;
+  let high = nums.length - 2;
 
   while (low <= high) {
     let mid = Math.floor((low + high) / 2);
@@ -70,3 +73,31 @@ const solution_optimal = (nums: Array<number>) => {
     }
   }
 };
+
+const solution_optimal_2 = (nums: Array<number>): number => {
+  let low = 0;
+  let high = nums.length - 1;
+
+  while (low < high) {
+    let mid = Math.floor((low + high) / 2);
+
+    if (mid % 2 !== 1) {
+      mid--;
+    }
+
+    if (nums[mid + 1] === nums[mid]) {
+      high = mid - 1;
+    } else {
+      low = mid + 1;
+    }
+  }
+  return nums[low];
+};
+// TEST CASES:
+// [3, 3, 7, 7, 10, 11, 11]
+// [1, 1, 2, 3, 3, 4, 4, 8, 8]
+// [1,1,2,3,3,4,4]
+// [1,1,2,2,3,4,4]
+// [1,2,2,3,3,4,4]
+// [1,1,2,2,3,3,4]
+// [1,1,2,2,3,4,4,5,5]
