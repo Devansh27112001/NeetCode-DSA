@@ -3,6 +3,8 @@
 
 // Increment the large integer by one and return the resulting array of digits.
 
+// TC = O(n)
+// SC = O(n)
 const solution_optimal = (digits: Array<number>): Array<number> => {
   let res: Array<number> = [];
   let sum = digits[digits.length - 1] + 1;
@@ -35,6 +37,8 @@ const solution_optimal = (digits: Array<number>): Array<number> => {
 };
 // console.log(solution_optimal([9]));
 
+// TC = O(n)
+// SC = O(n)
 const solution = (digits: Array<number>): Array<number> => {
   for (let i = digits.length - 1; i >= 0; i--) {
     if (digits[i] < 9) {
@@ -48,5 +52,4 @@ const solution = (digits: Array<number>): Array<number> => {
   digits[0] = 1;
   return digits;
 };
-
 console.log(solution([5, 4]));
