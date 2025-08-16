@@ -1,5 +1,8 @@
 // DESCRIPTION: Given two integer arrays nums1 and nums2, return an array of their intersection. Each element in the result must be unique and you may return the result in any order.
 
+// VARIANT TWO : The outpuy array should have all the occurences of the intersection. For ex: a = [1,2,2,1] and b = [2,2]. The output should be [2,2]
+// The solution will be the same as that of solution_optimal_2, just skip the converting the array to a set.
+
 const solution_brute_force = (
   nums1: Array<number>,
   nums2: Array<number>
@@ -15,7 +18,6 @@ const solution_brute_force = (
   }
   return [...interSet];
 };
-// console.log(solution_brute_force([4, 9, 5], [9, 4, 9, 8, 4]));
 
 const solution_optimal = (
   nums1: Array<number>,
@@ -33,9 +35,8 @@ const solution_optimal = (
 
   return intersectionArray;
 };
-console.log(solution_optimal([4, 9, 5], [9, 4, 9, 8, 4]));
 
-// Two Pointer approach
+// TWO POINTER APPROACH
 const solution_optimal_2 = (
   nums1: Array<number>,
   nums2: Array<number>
@@ -61,4 +62,26 @@ const solution_optimal_2 = (
   return res;
 };
 
-console.log(solution_optimal_2([4, 9, 5], [9, 4, 9, 8, 4]));
+// HASHMAP APPROACH
+const solution_optimal_3 = (
+  nums1: Array<number>,
+  nums2: Array<number>
+): number[] => {
+  let res: Array<number> = [];
+  let numMap = new Map<number, number>();
+  for (const num of nums1) {
+    if (!numMap.has(num)) {
+      numMap.set(num, 1);
+    }
+  }
+
+  for (const num of nums2) {
+    if (numMap.has(num) && numMap.get(num)! > 0) {
+      res.push(num);
+      numMap.set(num, 0);
+    }
+  }
+  return res;
+};
+
+console.log(solution_optimal_3([4, 9, 5], [9, 4, 9, 8, 4]));
