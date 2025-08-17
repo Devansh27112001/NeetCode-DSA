@@ -8,7 +8,7 @@
 // A substring is a contiguous sequence of characters within a string.
 // There may be leading zeroes in num or a good integer.
 
-const solution_brute_force = (str: string): string => {
+const solution_optimal = (str: string): string => {
   let largest: string = "";
   for (let i = 0; i < str.length - 2; i++) {
     if (str[i] === str[i + 1] && str[i + 1] === str[i + 2]) {
@@ -20,5 +20,4 @@ const solution_brute_force = (str: string): string => {
   }
   return largest;
 };
-
-console.log(solution_brute_force("2300019"));
+console.log(solution_optimal("2300019"));
