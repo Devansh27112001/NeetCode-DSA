@@ -1,0 +1,24 @@
+// DESCRIPTION : You are given a string num representing a large integer. An integer is good if it meets the following conditions:
+
+// It is a substring of num with length 3.
+// It consists of only one unique digit.
+// Return the maximum good integer as a string or an empty string "" if no such integer exists.
+
+// Note:
+// A substring is a contiguous sequence of characters within a string.
+// There may be leading zeroes in num or a good integer.
+
+const solution_brute_force = (str: string): string => {
+  let largest: string = "";
+  for (let i = 0; i < str.length - 2; i++) {
+    if (str[i] === str[i + 1] && str[i + 1] === str[i + 2]) {
+      let substring = str.slice(i, i + 3);
+      if (substring > largest) {
+        largest = substring;
+      }
+    }
+  }
+  return largest;
+};
+
+console.log(solution_brute_force("2300019"));
