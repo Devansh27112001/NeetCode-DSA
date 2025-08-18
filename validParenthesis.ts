@@ -6,7 +6,27 @@
 // Open brackets must be closed in the correct order.
 // Every close bracket has a corresponding open bracket of the same type.
 
-const solution = (str: string): boolean => {
+// TC = O(n^2)
+// SC = O(n)
+const solution_brute_force = (str: string): boolean => {
+  if (str.length % 2 !== 0) return false;
+
+  let prevLength = -1;
+
+  // O(n/2)
+  while (str.length !== prevLength) {
+    prevLength = str.length;
+
+    // O(n)
+    str = str.replace("()", "");
+    str = str.replace("[]", "");
+    str = str.replace("{}", "");
+  }
+  return str.length === 0;
+};
+// TC = O(n)
+// SC = O(n) , when the string has only opening brackets
+const solution_optimal = (str: string): boolean => {
   let brackStack: Array<string> = [];
   let bracMap = { "[": "]", "{": "}", "(": ")" };
   let i = 0;
@@ -22,7 +42,7 @@ const solution = (str: string): boolean => {
     }
     i++;
   }
-  return brackStack.length === 0 ? true : false;
+  return brackStack.length === 0;
 };
 
-console.log(solution("(("));
+console.log(solution_optimal("(("));
