@@ -1,8 +1,6 @@
 function isValidSudoku(board: Array<Array<string>>): boolean {
-  let rows: Array<Set<string>> = Array.from(
-    { length: 9 },
-    () => new Set<string>()
-  );
+  let rows: Set<string> = new Set();
+
   let columns: Array<Set<string>> = Array.from(
     { length: 9 },
     () => new Set<string>()
@@ -14,8 +12,8 @@ function isValidSudoku(board: Array<Array<string>>): boolean {
       if (cellValue === ".") continue;
 
       // ROW CHECK
-      if (rows[m].has(cellValue)) return false;
-      rows[m].add(cellValue);
+      if (rows.has(cellValue)) return false;
+      rows.add(cellValue);
 
       // COLUMN CHECK
       if (columns[n].has(cellValue)) return false;
@@ -27,20 +25,21 @@ function isValidSudoku(board: Array<Array<string>>): boolean {
       if (squares.get(squareKey)?.has(cellValue)) return false;
       squares.get(squareKey)?.add(cellValue);
     }
+    rows.clear();
   }
   return true;
 }
 
-console.log(
-  isValidSudoku([
-    ["1", "2", ".", ".", "3", ".", ".", ".", "."],
-    ["4", ".", ".", "5", ".", ".", ".", ".", "."],
-    [".", "9", "1", ".", ".", ".", ".", ".", "3"],
-    ["5", ".", ".", ".", "6", ".", ".", ".", "4"],
-    [".", ".", ".", "8", ".", "3", ".", ".", "5"],
-    ["7", ".", ".", ".", "2", ".", ".", ".", "6"],
-    [".", ".", ".", ".", ".", ".", "2", ".", "."],
-    [".", ".", ".", "4", "1", "9", ".", ".", "8"],
-    [".", ".", ".", ".", "8", ".", ".", "7", "9"],
-  ])
-);
+// console.log(
+//   isValidSudoku([
+//     [".", ".", "4", ".", ".", ".", "6", "3", "."],
+//     [".", ".", ".", ".", ".", ".", ".", ".", "."],
+//     ["5", ".", ".", ".", ".", ".", ".", "9", "."],
+//     [".", ".", ".", "5", "6", ".", ".", ".", "."],
+//     ["4", ".", "3", ".", ".", ".", ".", ".", "1"],
+//     [".", ".", ".", "7", ".", ".", ".", ".", "."],
+//     [".", ".", ".", "5", ".", ".", ".", ".", "."],
+//     [".", ".", ".", ".", ".", ".", ".", ".", "."],
+//     [".", ".", ".", ".", ".", ".", ".", ".", "."],
+//   ])
+// );
