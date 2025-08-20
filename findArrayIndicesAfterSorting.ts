@@ -20,7 +20,7 @@ const solution_brute_force = (
 };
 
 // TC = O(n)
-// SC = O(1)
+// SC = O(K), the number of times the target value appears, which is O(n) for the worst case
 const solution_optimal = (
   nums: Array<number>,
   target: number
@@ -38,8 +38,6 @@ const solution_optimal = (
     countSmaller++;
     countTarget--;
   }
-  res;
   return res;
 };
-
-solution_optimal([1, 2, 5, 2, 3], 2);
+// solution_optimal([1, 2, 5, 2, 3], 2);
