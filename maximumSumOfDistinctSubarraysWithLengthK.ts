@@ -22,5 +22,63 @@ const solution_brute_force = (arr: Array<number>, k: number): number => {
   }
   return maxSum;
 };
+// console.log(solution_brute_force([1, 2, 1, 3, 4, 2, 3], 3));
 
-console.log(solution_brute_force([1, 2, 1, 3, 4, 2, 3], 3));
+const solution_better = (arr: Array<number>, k: number): number => {
+  let maxSum = 0;
+
+  let numMap = new Map<number, number>();
+  for (let i = 0; i < k; i++) {
+    numMap.set(arr[i], (numMap.get(arr[i]) || 0) + 1);
+  }
+
+  if (numMap.size === k) {
+    let currSum = [...numMap.keys()].reduce((acc, curr) => acc + curr, 0);
+    maxSum = Math.max(currSum, maxSum);
+  }
+
+  for (let i = k; i < arr.length; i++) {
+    // The element that needs to be removed
+    let leavingElement = arr[i - k];
+    let freqLeavingElement = numMap.get(leavingElement);
+
+    // Remove or delete the i-k'th element
+    freqLeavingElement === 1
+      ? numMap.delete(leavingElement)
+      : numMap.set(leavingElement, freqLeavingElement! - 1);
+
+    // add the current element;
+    numMap.set(arr[i], (numMap.get(arr[i]) || 0) + 1);
+
+    if (numMap.size === k) {
+      let currSum = [...numMap.keys()].reduce((acc, curr) => acc + curr, 0);
+      maxSum = Math.max(currSum, maxSum);
+    }
+  }
+
+  return maxSum;
+};
+console.log(solution_better([4, 4, 4], 3));
+
+const solution_optimal = (arr: Array<number>, k: number): number => {
+  let maxSum = 0;
+  let sum = 0;
+  let l = 0;
+  let numMap = new Map<number, number>();
+
+  for (let r = 0; r < arr.length; r++) {
+    sum += arr[r];
+    numMap.set(arr[r], (numMap.get(arr[r]) || 0) + 1);
+    if (r - l + 1 === k) {
+      if (numMap.size === k) {
+        maxSum = Math.max(sum, maxSum);
+      }
+      sum -= arr[l];
+      numMap.set(arr[l], numMap.get(arr[l])! - 1);
+      if (numMap.get(arr[l]) === 0) numMap.delete(arr[l]);
+      l++;
+    }
+  }
+  return maxSum;
+};
+console.log(solution_optimal([4, 4, 4], 3));
