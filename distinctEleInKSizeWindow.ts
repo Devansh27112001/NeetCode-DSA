@@ -19,6 +19,8 @@ const solution_brute_force = (
 };
 // console.log(solution_brute_force([1, 2, 1, 3, 4, 2, 3], 4));
 
+// TC = O(N)
+// SC = O(K)
 const solution_optimal = (arr: Array<number>, k: number): Array<number> => {
   let res: Array<number> = [];
 
