@@ -15,6 +15,8 @@ const isPalindrome = (str: string): boolean => {
 };
 
 // console.log(isPalindrome("abccba"));
+// TC = O(n^3)
+// SC = O(n)
 const solution_brute_force = (str: string): string => {
   let longestPalindrome = "";
 
@@ -32,4 +34,36 @@ const solution_brute_force = (str: string): string => {
   return longestPalindrome;
 };
 
-console.log(solution_brute_force("babad"));
+const solution_optimal = (str: string): string => {
+  if (str.length <= 1) return str;
+  let maxStr = str[0];
+
+  const expandBothSides = (
+    str: string,
+    left: number,
+    right: number
+  ): string => {
+    while (left >= 0 && right < str.length && str[left] === str[right]) {
+      left--;
+      right++;
+    }
+    return str.slice(left + 1, right);
+  };
+  for (let i = 0; i < str.length - 1; i++) {
+    // ODD LENGTH
+    let odd = expandBothSides(str, i, i);
+
+    // EVEN LENGTH
+    let even = expandBothSides(str, i, i + 1);
+
+    if (odd.length > maxStr.length) {
+      maxStr = odd;
+    }
+    if (even.length > maxStr.length) {
+      maxStr = even;
+    }
+  }
+  return maxStr;
+};
+
+console.log(solution_optimal("bb"));
