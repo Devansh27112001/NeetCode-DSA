@@ -4,6 +4,9 @@ You are given an integer array nums. You are initially positioned at the array's
 
 Return true if you can reach the last index, or false otherwise.
  */
+
+// TC = O(2^n)
+// TC = O(n)
 const solution_brute_force = (nums: Array<number>): boolean => {
   function canReachEnd(position: number) {
     // Base case 1: If we have reached or passed the last index, we succeeded
@@ -28,9 +31,10 @@ const solution_brute_force = (nums: Array<number>): boolean => {
   // Start the recursion from the first position (index 0)
   return canReachEnd(0);
 };
+// console.log(solution_brute_force([3, 2, 1, 0, 4]));
 
-console.log(solution_brute_force([3, 2, 1, 0, 4]));
-
+// TC = O(n)
+// SC = O(1)
 const solution_optimal = (nums: Array<number>): boolean => {
   if (nums[0] === 0) return false;
   let currDes = nums.length - 1;
