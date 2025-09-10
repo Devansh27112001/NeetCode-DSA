@@ -25,3 +25,14 @@ const solution_optimal = (s: string, t: string): boolean => {
 };
 
 console.log(solution_optimal("badc", "baba"));
+
+const solution_optimal_2 = (s: string, t: string): boolean => {
+  if (s.length !== t.length) return false;
+
+  for (let i = 0; i < s.length; i++) {
+    if (s.indexOf(s[i]) !== t.indexOf(t[i])) {
+      return false;
+    }
+  }
+  return true;
+};
