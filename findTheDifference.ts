@@ -12,6 +12,8 @@ Constraints:
   s and t consist of lowercase English letters.
 */
 
+// TC = O(m + n + k)
+// SC = O(k)
 const solution_optimal = (s: string, t: string): string => {
   let sMap: { [key: string]: number } = {};
   let tMap: { [key: string]: number } = {};
@@ -33,5 +35,29 @@ const solution_optimal = (s: string, t: string): string => {
   }
   return "";
 };
+// console.log(solution_optimal("", "y"));
 
-console.log(solution_optimal("", "y"));
+// TC = O(n*m_initial)
+const solution_optimal_2 = (s: string, t: string): string => {
+  for (const char of s) {
+    t = t.replace(char, "");
+  }
+  return t;
+};
+// console.log(solution_optimal_2("aa", "aba"));
+
+const solution_optimal_3 = (s: string, t: string): string => {
+  let xorS = 0;
+  for (let i = 0; i < s.length; i++) {
+    xorS ^= s[i].charCodeAt(0);
+  }
+
+  let xorT = 0;
+  for (let i = 0; i < t.length; i++) {
+    xorS ^= t[i].charCodeAt(0);
+  }
+
+  return String.fromCharCode(xorS ^ xorT);
+};
+
+console.log(solution_optimal_3("aa", "aba"));
