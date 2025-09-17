@@ -16,5 +16,17 @@ const solutin_brute_force = (nums: Array<number>, duration: number): number => {
   }
   return pSet.size;
 };
+// console.log(solutin_brute_force([1, 2], 2));
 
-console.log(solutin_brute_force([1, 2], 2));
+const solution_optimal = (nums: Array<number>, duration: number): number => {
+  let count = duration;
+  for (let i = 1; i < nums.length; i++) {
+    if (nums[i - 1] + duration > nums[i]) {
+      count += nums[i] - nums[i - 1];
+    } else {
+      count += duration;
+    }
+  }
+  return count;
+};
+// console.log(solution_optimal([1, 3, 4], 3));
