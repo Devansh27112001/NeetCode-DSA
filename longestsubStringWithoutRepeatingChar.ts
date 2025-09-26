@@ -18,14 +18,14 @@ const solution_better = (strs: string): number => {
   return maxLen;
 };
 
-const solutin_better = (strs: string): number => {
+const solution_optimal = (strs: string): number => {
   let maxLen = 0;
   let strSet = new Set<string>();
   let left = 0;
 
   for (let right = 0; right < strs.length; right++) {
     while (strSet.has(strs[right])) {
-      strSet.delete(strs[right]);
+      strSet.delete(strs[left]);
       left++;
     }
     strSet.add(strs[right]);
