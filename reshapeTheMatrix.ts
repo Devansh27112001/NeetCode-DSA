@@ -24,9 +24,34 @@ const solution_better = (
   }
   return res;
 };
+// console.log(
+//   solution_better(
+//     [
+//       [1, 2],
+//       [3, 4],
+//       [5, 6],
+//     ],
+//     2,
+//     3
+//   )
+// );
+
+const solution_optimal = (
+  mat: Array<Array<number>>,
+  r: number,
+  c: number
+): Array<Array<number>> => {
+  let res: Array<Array<number>> = [];
+  if (r * c !== mat.length * mat[0].length) return mat;
+  let flatArray = mat.flat();
+  for (let i = 0; i < r; i++) {
+    res.push(flatArray.slice(i * c, i * c + c));
+  }
+  return res;
+};
 
 console.log(
-  solution_better(
+  solution_optimal(
     [
       [1, 2],
       [3, 4],
