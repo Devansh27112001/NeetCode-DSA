@@ -37,6 +37,26 @@ function solution_better(nums: number[]): number {
 // );
 
 const solution_optimal = (nums: number[]): number => {
+  let maxLength = 0;
   let hashMap = new Map<number, number>();
-  return 0;
+  for (const num of nums) {
+    hashMap.set(num, (hashMap.get(num) || 0) + 1);
+  }
+
+  for (const key of hashMap.keys()) {
+    if (hashMap.get(key + 1)) {
+      maxLength = Math.max(
+        maxLength,
+        hashMap.get(key)! + hashMap.get(key + 1)!
+      );
+    }
+  }
+
+  return maxLength;
 };
+
+console.log(
+  solution_optimal([
+    3, 2, 2, 3, 2, 1, 3, 3, 3, -2, 0, 3, 2, 1, 0, 3, 1, 0, 1, 3, 0, 3, 3,
+  ])
+);
