@@ -12,3 +12,4 @@ const solution_optimal = (nums: Array<number>, k: number): boolean => {
   }
   return false;
 };
+console.log(solution_optimal([1, 2, 3, 1], 3));

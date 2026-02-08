@@ -29,8 +29,8 @@ const solution_optimal = (s: string, numRows: number): string => {
   return res.flat().join("");
 };
 
-// console.log(solution_optimal("AB", 1));
-
+// TC = O(n)
+// SC = O(n)
 const solution_optimal_2 = (s: string, numRows: number): string => {
   if (numRows === 1) return s;
   let resArray = new Array(numRows).fill("");
@@ -46,5 +46,3 @@ const solution_optimal_2 = (s: string, numRows: number): string => {
   }
   return resArray.join("");
 };
-
-console.log(solution_optimal_2("PAYPALISHIRING", 3));

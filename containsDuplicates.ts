@@ -5,7 +5,6 @@ const solution_brute_force = (arr: Array<number>): boolean => {
     for (let j = i + 1; j < arr.length; j++) {
       if (arr[i] === arr[j]) {
         return true;
-        break;
       }
     }
   }

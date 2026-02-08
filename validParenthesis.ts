@@ -28,7 +28,7 @@ const solution_brute_force = (str: string): boolean => {
 // SC = O(n) , when the string has only opening brackets
 const solution_optimal = (str: string): boolean => {
   let brackStack: Array<string> = [];
-  let bracMap = { "[": "]", "{": "}", "(": ")" };
+  let bracMap: { [key: string]: string } = { "[": "]", "{": "}", "(": ")" };
   let i = 0;
   while (i < str.length) {
     const currEle = str[i];

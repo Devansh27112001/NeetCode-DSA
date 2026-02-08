@@ -25,4 +25,4 @@ const solution_optimal = (nums: Array<number>): Array<string> => {
   return res;
 };
 
-console.log(solution_optimal([0, 2, 3, 4, 6, 8, 9]));
+console.log(solution_optimal([0, 1, 2, 4, 5, 8, 9]));

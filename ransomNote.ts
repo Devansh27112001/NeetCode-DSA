@@ -53,5 +53,4 @@ const solution_optimal__3 = (ransomNote: string, magazine: string): boolean => {
   }
   return true;
 };
-
-console.log(solution_optimal__3("aab", "baa"));
+// console.log(solution_optimal__3("aab", "baa"));
